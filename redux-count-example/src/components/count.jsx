@@ -28,7 +28,6 @@ Count.protoType = {
 
 export default connect(
   state => {
-    console.log(state);
     return { number: state.count.number };
   },
   dispatch => ({ add: () => dispatch(allActions.add), subtraction: () => dispatch(allActions.subtraction) }),

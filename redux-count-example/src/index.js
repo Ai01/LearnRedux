@@ -1,22 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+
 import Reducers from './reducer';
-import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { loggerMiddleWare, applyMiddlewareByMonkeypatching } from './middlewares/loggerMiddleWare';
 
 const store = createStore(
   Reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
+
+applyMiddlewareByMonkeypatching(store, [loggerMiddleWare]);
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 registerServiceWorker();
