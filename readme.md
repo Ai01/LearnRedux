@@ -1,3 +1,3 @@
 # redux
 
-> redux learning example
+redux learning example
