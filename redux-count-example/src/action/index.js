@@ -3,7 +3,13 @@ const allActions = {
     type: 'add',
   },
   subtraction: {
-    type: 'subtraction'
+    type: 'subtraction',
+  },
+  staredUpdate: {
+    type: 'STARTED_UPDATING',
+  },
+  updated: {
+    type: 'UPDATED'
   }
 };
 
